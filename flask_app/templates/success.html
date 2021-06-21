@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+</head>
+<body>
+    <div class="conatiner">
+        <h3>Email addresses entered:</h3>
+        <div class="main">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <p style="color: rgb(79, 156, 72);">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email Address</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                {% for entry in all_email: %}
+                    <tr>
+                        <td>{{ entry.email }} </td>
+                        <td>Created:  {{ entry.created_at }}</td>
+                        <td><a href="/entry/delete/{{ entry.id }}">Delete</a></td>
+                        {% endfor %}
+                    </tr>
+            </table>
+        </div>
+        <a href='/'>Go Back</a>
+    </div>
+</body>
+</html>
